@@ -1,5 +1,6 @@
 function Node(value) {
-    const radius = 32.5
+    // Larger radius for multi-character operators
+    const radius = value.length > 1 ? 40 : 32.5
     this.value = value;
     this.x = null;
     this.y = null;
@@ -28,7 +29,9 @@ function Node(value) {
         context.fill()
         context.strokeStyle = '#212121'
         context.stroke()
-        context.font = '25px Times New Roman'
+        // Smaller font for multi-character operators
+        const fontSize = this.value.length > 1 ? '20px' : '25px'
+        context.font = fontSize + ' Times New Roman'
         context.textAlign = 'center'
         context.textBaseline = 'middle'
         context.fillStyle = "#212121";
@@ -69,7 +72,7 @@ function drawEdgeAnimated(origin_x, origin_y, destine_x, destine_y, ctx, resolve
 }
 
 function constructTree(postfix) {
-    const OPERATORS = ['*', '/', '-', '+']
+    const OPERATORS = ['*', '/', '-', '+', '^', '<', '>', '<=', '>=', '==', '!=', '&&', '||', '!']
     var stack = []
     var root = null;
     var current;

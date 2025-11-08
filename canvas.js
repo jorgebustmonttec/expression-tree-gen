@@ -8,7 +8,13 @@
         'x - y + (c / (a + b))',
         '(a / y) + b - (c * x)',
         '(a - b) * (c + d) / z',
-        '(a * b) - (x / y)'
+        '(a * b) - (x / y)',
+        'a^b + c',
+        '(a > b) && (c < d)',
+        '(x == y) || (a != b)',
+        'a^(b+c) * d',
+        '(a >= b) && (c <= d)',
+        'x + y^2 - z'
     ]
     var canvas = document.querySelector('canvas')
     var c = canvas.getContext('2d')
@@ -63,7 +69,9 @@ function displayErrorMessage() {
                 - Use * for multiplication and / for division. <br/>
                 - Valid operators and operands are:<br/>
                 <div style="margin-left: 10px;">
-                    <i>Operators</i>: <b>[+ - * / ]</b><br/>
+                    <i>Arithmetic</i>: <b>[+ - * / ^]</b><br/>
+                    <i>Comparison</i>: <b>[< > <= >= == !=]</b><br/>
+                    <i>Logical</i>: <b>[&& ||]</b><br/>
                     <i>Operands</i>: Any alphabetic letter.
                 </div>
             </div>
