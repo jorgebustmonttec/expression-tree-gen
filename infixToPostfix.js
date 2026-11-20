@@ -40,7 +40,7 @@ function isValidExpression(expr) {
   return true;
 }
 
-function infixToPostfix(expression) {
+function infixToPostfix(expression, isRightAssociative) {
   if (!isValidExpression(expression)) {
     return null;
   }
@@ -101,8 +101,9 @@ function infixToPostfix(expression) {
     } else if (prec.hasOwnProperty(token)) {
       // Handle operators - check if operator exists in precedence table
       var peek_elem = op_stack.slice(-1)[0];
-      // For right-associative operators like ^, use > instead of >=
-      if (token === '^') {
+      // Right-associative: use > for comparison
+      // Left-associative: use >= for comparison
+      if (isRightAssociative) {
         while (op_stack.length > 0 && peek_elem !== '(' && (prec[peek_elem] > prec[token])) {
           postfixList.push(op_stack.pop())
           peek_elem = op_stack.slice(-1)[0];

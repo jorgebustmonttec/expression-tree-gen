@@ -22,10 +22,11 @@
 
     document.getElementById('generate-tree').addEventListener('click', () => {
         var expression = document.getElementById('expression-input').value
+        var isRightAssociative = document.getElementById('associativity-toggle').checked
         if (typeof expression !== 'undefined' && null != expression) {
             expression = expression.replace(/\s+/g, '')
             expression = expression.toLowerCase()
-            var postfix = infixToPostfix(expression);
+            var postfix = infixToPostfix(expression, isRightAssociative);
             if (null !== postfix) {
                 try {
                     var root = constructTree(postfix)
